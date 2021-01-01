@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.2.0/lib/p5.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet"> 
+        <title>Aaron Haarti</title>        
+    </head>
+    <body>
+        <div id = "container">
+            <div id = "mandelbrotSet">
+                <canvas id = "canvasControls" style="position:absolute"></canvas>
+            </div>
+            <div id="controls">
+                <button id="reset">Reset</button>
+                <button id="undo">Undo</button>
+                <button id = "recalculate">Recalculate</button>
+                <form id="constants">
+                    <label for="maxIterations">Iteration count</label>
+                    <input type="text" id="inputs" name="maxIterations" value="100">
+                    <label for="pixelDensity">Pixel density</label>
+                    <input type="text" id="inputs" name="pixelDensity" value="1500">
+                </form>
+            </div>  
+        </div>     
+    </body>
+    <script type="text/javascript" src="{{url_for('static', filename='javascript/load-mandelbrot.js')}}"></script>        
+
+</html>

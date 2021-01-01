@@ -1,0 +1,68 @@
+body {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1vw;
+    height: auto;
+    width: auto;
+    padding:0 0;
+    margin: 0 0;
+    background-color: #000000;
+}
+
+
+#canvasControls {
+    background-color: transparent;
+    position: absolute;
+    top:inherit;
+    left: inherit;
+    z-index: 5;
+    padding: 0;
+    margin: 0px;
+
+}
+
+#controls {
+    display:flex;
+    flex-direction: row;
+    position:fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: 0.75vw 0.75vw;
+    height: 5vh;
+    width: 100%;
+    background-color: black;
+    border-top:0.1em solid white;
+    align-items: center;
+}
+label{
+    color: #FFFFFF;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: inherit;
+}
+
+input{
+    width: 5vw;
+    height: 3.5vh;
+    font-size: inherit;
+
+}
+
+button{
+    padding:0.5vw 1vh;
+    border:1px solid #FFFFFF;
+    background-color: #000000;
+    margin:0 0.75vw 0 0;
+    border-radius:0.12vw;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight:300;
+    font-size: inherit;
+    color:#FFFFFF;
+    text-align:center;
+    transition: all 0.2s;
+}
+button:hover{
+    color:#000000;
+    background-color:#FFFFFF;
+}
