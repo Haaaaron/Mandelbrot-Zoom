@@ -4,7 +4,7 @@ let mandelbrotPrevious;
 let box = null;
 let urlInitial = {
   coord: [-2,1,-1,1],
-  density: 3000,
+  density: 1500,
   iterations: 100
 }
 let url = urlInitial;
