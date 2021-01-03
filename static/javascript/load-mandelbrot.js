@@ -1,28 +1,40 @@
 let mandelbrotInitial;
 let mandelbrot;
 let mandelbrotPrevious;
-let box = null;
-let urlInitial = {
-  coord: [-2,1,-1,1],
-  density: 1500,
-  iterations: 100
-}
-let url = urlInitial;
 
-var ccanvas = document.getElementById("canvasControls")
+let box = null;
+
+const initialMandelbrotConst = {
+  coord: {
+    minX: -2,
+    maxX: 1,
+    minY: -1,
+    maxY: 1
+  },
+  density   : 1500,
+  iteration : 100,
+  url       : function () {
+    return `/data?minX=${this.coord.minX}&maxX=${this.coord.maxX}&minY=${this.coord.minY}&maxY=${this.coord.maxY}&density=${this.density}&iter=${this.iteration}`;
+  }
+};
+
+let mandelbrotConst = initialMandelbrotConst;
+
+
+let ccanvas = document.getElementById("canvasControls")
 ccanvas.width = window.innerWidth;
 ccanvas.height = window.innerHeight;
 
 function preload() {
   
-  let loadUrl = "/data/" + url.coord.join("_") + "_" + url.density + "_" + url.iterations;
-  mandelbrotInitial = loadJSON(loadUrl);
+  mandelbrotInitial = loadJSON(mandelbrotConst.url());
   mandelbrot = mandelbrotInitial;
 
 }
+
 function setup() {
 
-  var myCanvas = createCanvas(mandelbrot.width,mandelbrot.height);
+  let myCanvas = createCanvas(mandelbrot.width,mandelbrot.height);
   myCanvas.parent('mandelbrotSet');
   drawMandelbrot(mandelbrot);
 
@@ -30,29 +42,20 @@ function setup() {
 
 function reloadMandelbrot() {
 
-  let loadUrl = "/data/" + url.coord.join("_") + "_" + url.density + "_" + url.iterations;
   mandelbrotPrevious = mandelbrot;
-  mandelbrot = loadJSON(loadUrl, drawMandelbrot);
+  mandelbrot = loadJSON(mandelbrotConst.url(), drawMandelbrot);
+
 }
 
-//using point is extremely slow
-// function drawMandelbrot(data) {
-//   resizeCanvas(data.width,data.height)
-//   for (var i = 0; i< data.height; i++) {
-//     for (var j = 0; j<data.width; j++) {
-//       stroke(data.set[i][j]);
-//       point(j,i);
-
-//     }
-//   }
-// }
 function drawMandelbrot(data) {
+
   resizeCanvas(data.width,data.height);
   pixelDensity(1);
   loadPixels();
-  for (var x = 0; x < width; x++) {
-    for (var y = 0; y < height; y++) {
-      var p = (x+y*width)*4;
+
+  for (let x = 0; x < width; x++) {
+    for (let y = 0; y < height; y++) {
+      let p = (x+y*width)*4;
       pixels[p] = data.set[y][x];
       pixels[p+1] = data.set[y][x];
       pixels[p+2] = data.set[y][x];
@@ -60,14 +63,16 @@ function drawMandelbrot(data) {
 
     }
   }
+
   updatePixels();
+
 }
 
 
 $(window).ready(function()
 {     
-  var ccanvas = $('#canvasControls');
-  var c = ccanvas[0].getContext('2d');
+  let ccanvas = $('#canvasControls');
+  let c = ccanvas[0].getContext('2d');
 
 
   ccanvas.mousedown(function(e) {
@@ -140,7 +145,7 @@ $(window).ready(function()
 }); 
 
 $(window).resize(function() {
-  var ccanvas = document.getElementById("canvasControls");
+  let ccanvas = document.getElementById("canvasControls");
   const setWidth = document.getElementById('mandelbrotSet').clientWidth
   const setHeight = document.getElementById('mandelbrotSet').clientHeight
   ccanvas.width = setWidth;
