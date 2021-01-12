@@ -35,8 +35,6 @@ def generate_set():
     dim = np.shape(mandelbrot_data)
     coord=[min_x,max_x,min_y,max_y]
 
-    print(mandelbrot_data)
-
     data = {
         "set": mandelbrot_data.tolist(),
         "height": dim[0],

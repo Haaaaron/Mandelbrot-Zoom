@@ -3,8 +3,8 @@ let mandelbrot;
 let mandelbrotPrevious;
 let jsonCall = false;
 let loading = document.getElementById("load");
-
 let box = null;
+let cCanvas = document.getElementById("canvasControls");
 
 class MandelbrotConditions {
   constructor() {
@@ -34,13 +34,7 @@ class MandelbrotConditions {
 
 let mandelbrotConst = new MandelbrotConditions();
 
-let ccanvas = document.getElementById("canvasControls");
-ccanvas.width = window.innerWidth;
-ccanvas.height = window.innerHeight;
-
 function preload() {
-  // mandelbrotInitial = loadJSON(mandelbrotConst.url());
-  // mandelbrot = mandelbrotInitial;
   loading.style.display = "block";
   mandelbrotInitial = loadJSON(mandelbrotConst.url());
   mandelbrot = mandelbrotInitial;
@@ -49,22 +43,13 @@ function preload() {
 function setup() {
   let myCanvas = createCanvas(mandelbrot.width, mandelbrot.height);
   myCanvas.parent("mandelbrotSet");
-  let ccanvas = document.getElementById("canvasControls");
-  const setWidth = document.getElementById("mandelbrotSet").clientWidth;
-  const setHeight = document.getElementById("mandelbrotSet").clientHeight;
-  ccanvas.width = setWidth;
-  ccanvas.height = setHeight;
   drawMandelbrot(mandelbrot);
 }
 
 function reloadMandelbrot() {
   mandelbrotPrevious = mandelbrot;
   loading.style.display = "block";
-  mandelbrot = loadJSON(mandelbrotConst.url(), drawMandelbrot, error());
-}
-
-function error() {
-  console.log("fuc");
+  mandelbrot = loadJSON(mandelbrotConst.url(), drawMandelbrot);
 }
 
 function drawMandelbrot(data) {
@@ -84,6 +69,8 @@ function drawMandelbrot(data) {
 
   updatePixels();
   loading.style.display = "none";
+  cCanvas.width = document.getElementById("mandelbrotSet").clientWidth;
+  cCanvas.height = document.getElementById("mandelbrotSet").clientHeight;
 }
 
 function saveSVG() {
@@ -156,6 +143,7 @@ $(window).ready(function () {
         minY: ImCoord[0],
         maxY: ImCoord[1],
       };
+
       reloadMandelbrot();
     }
   });
@@ -183,9 +171,8 @@ $(window).ready(function () {
 });
 
 $(window).resize(function () {
-  let ccanvas = document.getElementById("canvasControls");
-  const setWidth = document.getElementById("mandelbrotSet").clientWidth;
-  const setHeight = document.getElementById("mandelbrotSet").clientHeight;
-  ccanvas.width = setWidth;
-  ccanvas.height = setHeight;
+  let setWidth = document.getElementById("mandelbrotSet").clientWidth;
+  let setHeight = document.getElementById("mandelbrotSet").clientHeight;
+  cCanvas.width = setWidth;
+  cCanvas.height = setHeight;
 });
