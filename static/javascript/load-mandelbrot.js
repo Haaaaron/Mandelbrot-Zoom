@@ -2,6 +2,7 @@ let mandelbrotInitial;
 let mandelbrot;
 let mandelbrotPrevious;
 let jsonCall = false;
+let loading = document.getElementById("load");
 
 let box = null;
 
@@ -13,7 +14,7 @@ class MandelbrotConditions {
       minY: -1,
       maxY: 1,
     };
-    this.density = 1500;
+    this.density = 1000;
     this.iteration = 100;
   }
   url() {
@@ -38,6 +39,9 @@ ccanvas.width = window.innerWidth;
 ccanvas.height = window.innerHeight;
 
 function preload() {
+  // mandelbrotInitial = loadJSON(mandelbrotConst.url());
+  // mandelbrot = mandelbrotInitial;
+  loading.style.display = "block";
   mandelbrotInitial = loadJSON(mandelbrotConst.url());
   mandelbrot = mandelbrotInitial;
 }
@@ -55,18 +59,8 @@ function setup() {
 
 function reloadMandelbrot() {
   mandelbrotPrevious = mandelbrot;
-
-  try {
-    if (jsonCall == false) {
-      jsonCall == true;
-      mandelbrot = loadJSON(mandelbrotConst.url(), drawMandelbrot, error());
-      jsonCall == false;
-    } else {
-      console.log(false);
-    }
-  } catch (err) {
-    console.log(err);
-  }
+  loading.style.display = "block";
+  mandelbrot = loadJSON(mandelbrotConst.url(), drawMandelbrot, error());
 }
 
 function error() {
@@ -89,6 +83,11 @@ function drawMandelbrot(data) {
   }
 
   updatePixels();
+  loading.style.display = "none";
+}
+
+function saveSVG() {
+  save("mySVG.svg");
 }
 
 $(window).ready(function () {
@@ -177,6 +176,9 @@ $(window).ready(function () {
     mandelbrotConst.iteration = constants[0].value;
     mandelbrotConst.density = constants[1].value;
     reloadMandelbrot();
+  });
+  $("#save").click(function () {
+    saveSVG();
   });
 });
 

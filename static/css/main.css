@@ -1,68 +1,127 @@
 body {
-    font-family: 'Titillium Web', sans-serif;
-    font-size: 1vw;
-    height: auto;
-    width: auto;
-    padding:0 0;
-    margin: 0 0;
-    background-color: #000000;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 1vw;
+  height: auto;
+  width: auto;
+  padding: 0 0;
+  margin: 0 0;
+  background-color: #000000;
 }
 
-
 #canvasControls {
-    background-color: transparent;
-    position: absolute;
-    top:inherit;
-    left: inherit;
-    z-index: 5;
-    padding: 0;
-    margin: 0px;
-
+  background-color: transparent;
+  position: absolute;
+  top: inherit;
+  left: inherit;
+  z-index: 5;
+  padding: 0;
+  margin: 0px;
 }
 
 #controls {
-    display:flex;
-    flex-direction: row;
-    position:fixed;
-    left: 0;
-    bottom: 0;
-    z-index: 10;
-    padding: 0.75vw 0.75vw;
-    height: 5vh;
-    width: 100%;
-    background-color: black;
-    border-top:0.1em solid white;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 0.75vw 0.75vw;
+  height: 5vh;
+  width: 100%;
+  background-color: black;
+  border-top: 0.1em solid white;
+  align-items: center;
 }
-label{
-    color: #FFFFFF;
-    font-family: 'Titillium Web', sans-serif;
-    font-size: inherit;
-}
-
-input{
-    width: 5vw;
-    height: 3.5vh;
-    font-size: inherit;
-
+label {
+  color: #ffffff;
+  font-family: "Titillium Web", sans-serif;
+  font-size: inherit;
 }
 
-button{
-    padding:0.5vw 1vh;
-    border:1px solid #FFFFFF;
-    background-color: #000000;
-    margin:0 0.75vw 0 0;
-    border-radius:0.12vw;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-family: 'Titillium Web', sans-serif;
-    font-weight:300;
-    font-size: inherit;
-    color:#FFFFFF;
-    text-align:center;
-    transition: all 0.2s;
+input {
+  width: 5vw;
+  height: 3.5vh;
+  padding-right: 4px;
+  font-size: inherit;
 }
-button:hover{
-    color:#000000;
-    background-color:#FFFFFF;
+
+button {
+  padding: 0.5vw 1vh;
+  border: 1px solid #ffffff;
+  background-color: #000000;
+  margin: 0 0.75vw 0 0;
+  border-radius: 0.12vw;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 300;
+  font-size: inherit;
+  color: #ffffff;
+  text-align: center;
+  transition: all 0.2s;
+}
+button:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
+.spinner {
+  display: none;
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.spinner > div {
+  background-color: #333;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+
+  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1s;
+  animation-delay: -1s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+  0%,
+  40%,
+  100% {
+    -webkit-transform: scaleY(0.4);
+  }
+  20% {
+    -webkit-transform: scaleY(1);
+  }
+}
+
+@keyframes sk-stretchdelay {
+  0%,
+  40%,
+  100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }
+  20% {
+    transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+  }
 }
