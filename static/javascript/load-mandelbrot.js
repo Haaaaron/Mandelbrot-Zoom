@@ -161,18 +161,24 @@ $(window).ready(function () {
 
   $("#recalculate").click(function () {
     var constants = $("#constants").serializeArray();
-    mandelbrotConst.iteration = constants[0].value;
-    mandelbrotConst.density = constants[1].value;
-    reloadMandelbrot();
+    let iteration = parseInt(constants[0].value);
+    let density = parseInt(constants[1].value);
+
+    if (iteration && density) {
+      mandelbrotConst.iteration = iteration;
+      mandelbrotConst.density = density;
+      reloadMandelbrot();
+    }
   });
+
   $("#save").click(function () {
     saveSVG();
   });
 });
 
-$(window).resize(function () {
-  let setWidth = document.getElementById("mandelbrotSet").clientWidth;
-  let setHeight = document.getElementById("mandelbrotSet").clientHeight;
-  cCanvas.width = setWidth;
-  cCanvas.height = setHeight;
-});
+// $(window).resize(function () {
+//   let setWidth = document.getElementById("mandelbrotSet").clientWidth;
+//   let setHeight = document.getElementById("mandelbrotSet").clientHeight;
+//   cCanvas.width = setWidth;
+//   cCanvas.height = setHeight;
+// });

@@ -67,8 +67,8 @@ button:hover {
 }
 .spinner {
   display: none;
-  width: 50px;
-  height: 40px;
+  width: 5vw;
+  height: 3.5vh;
   text-align: center;
   font-size: 10px;
 }

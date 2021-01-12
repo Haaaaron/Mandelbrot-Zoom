@@ -28,9 +28,21 @@
         <button id="recalculate">Recalculate</button>
         <form id="constants">
           <label for="maxIterations">Iteration count</label>
-          <input type="text" id="inputs" name="maxIterations" value="100" />
+          <input
+            type="number"
+            step="100"
+            id="inputs"
+            name="maxIterations"
+            value="100"
+          />
           <label for="pixelDensity">Pixel density</label>
-          <input type="text" id="inputs" name="pixelDensity" value="1500" />
+          <input
+            type="number"
+            step="100"
+            id="inputs"
+            name="pixelDensity"
+            value="1500"
+          />
         </form>
         <div class="spinner" id="load">
           <div class="rect1"></div>
