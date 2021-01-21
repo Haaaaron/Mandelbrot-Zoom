@@ -1,6 +1,5 @@
 import numpy as np 
 import mandelbrot
-import matplotlib.pyplot as plt
 import time
 
 
@@ -15,11 +14,3 @@ def generate(min_x=-2,max_x=1,min_y=-1,max_y=1, n=1500,iteration=255):
     data = mandelbrot.generate_heat_map(min_x,max_y,i_n,j_n,abs_x,abs_y,iteration).astype('float64')
 
     return data
-
-if __name__ == '__main__':
-
-    #for testing with matplotlib
-    data = generate()
-    print(data)
-    plt.imshow(data)
-    plt.show()
