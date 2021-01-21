@@ -7,7 +7,7 @@ Tool to explore the mandelbrot set. Calculated with fortran and displayed with j
 # Getting started
 All commands will be excecuted in the root directory of the project
 
-## Creating fortran to python excecutable:
+## Creating Fortran to python excecutable:
 
 Note that you will need a fortran compiler to create the excecutable.
 (Tested with gfortran https://gcc.gnu.org/wiki/GFortran)
