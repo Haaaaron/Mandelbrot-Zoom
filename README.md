@@ -6,19 +6,6 @@ Tool to explore the mandelbrot set. Calculated with fortran and displayed with j
 
 # Getting started
 All commands will be excecuted in the root directory of the project
-
-## Creating Fortran to python excecutable:
-
-Note that you will need a fortran compiler to create the excecutable.
-(Tested with gfortran https://gcc.gnu.org/wiki/GFortran)
-
-Run makefile:
-  
-  `make`
-  
-Or the command directly:
-
-  `f2py -c -m mandelbrot mandelbrot.f90 --f90flags="-fopenmp" -lgomp`
   
 ## Setting up environment with python virtualenv:
 
@@ -33,6 +20,19 @@ Activate environment:
 Install dependencies using requirements.txt:
 
     pip install -r requirements.txt
+
+## Creating Fortran to python excecutable:
+
+Note that you will need a fortran compiler to create the excecutable.
+(Tested with gfortran https://gcc.gnu.org/wiki/GFortran)
+
+Run makefile:
+  
+  `make`
+  
+Or the command directly:
+
+  `f2py -c -m mandelbrot mandelbrot.f90 --f90flags="-fopenmp" -lgomp`
     
 ## Running Flask in production mode: 
 
