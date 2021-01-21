@@ -38,7 +38,7 @@ Or the command directly:
 
 Export app and run:
 
-    export FLASK_APP='app.py'
+    export FLASK_APP='index.py'
     flask run
 
 Open the given url in your browser (default):
