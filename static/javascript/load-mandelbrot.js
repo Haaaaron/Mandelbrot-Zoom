@@ -176,9 +176,9 @@ $(window).ready(function () {
   });
 });
 
-// $(window).resize(function () {
-//   let setWidth = document.getElementById("mandelbrotSet").clientWidth;
-//   let setHeight = document.getElementById("mandelbrotSet").clientHeight;
-//   cCanvas.width = setWidth;
-//   cCanvas.height = setHeight;
-// });
+$(window).resize(function () {
+  let setWidth = document.getElementById("mandelbrotSet").clientWidth;
+  let setHeight = document.getElementById("mandelbrotSet").clientHeight;
+  cCanvas.width = setWidth;
+  cCanvas.height = setHeight;
+});
