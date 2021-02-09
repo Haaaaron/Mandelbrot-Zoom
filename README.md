@@ -5,7 +5,7 @@ https://mandelbrotzoom.pythonanywhere.com/
 Tool to explore the mandelbrot set. Calculated with fortran and displayed with javascript. Framework is made with python.
 
 # Getting started
-All commands will be excecuted in the root directory of the project
+All commands will be excecuted in the ./backend directory of the project
   
 ## Setting up environment with python virtualenv:
 

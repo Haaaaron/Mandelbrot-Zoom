@@ -1,8 +1,11 @@
-subroutine generate_heat_map(matrix,min_x,min_y,i_n,j_n,abs_x,abs_y,max_iteration)
+subroutine calculate_mandelbrot_set(matrix,min_x,min_y,i_n,j_n,abs_x,abs_y,max_iteration)
 
     !====================================================
     ! Generates the mandelbrot set in the range of given
     ! coordinates and with resolution n
+    !
+    ! Returns intent out variable:"matrix" 
+    ! that contains calculated data
     !====================================================
     implicit none 
     integer, parameter :: k=8
@@ -33,4 +36,4 @@ subroutine generate_heat_map(matrix,min_x,min_y,i_n,j_n,abs_x,abs_y,max_iteratio
     !$omp end do
     !$omp end parallel    
 
-end subroutine generate_heat_map
+end subroutine calculate_mandelbrot_set
