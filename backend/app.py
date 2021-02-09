@@ -61,7 +61,7 @@ def generate_set():
         }
 
         for key in query_params:
-            if len(query_params[key]) == 0:
+            if len(query_params[key]) == 0 or query_params[key] == "NaN":
                 raise TypeError
             query_params[key] = float(query_params[key])
 
@@ -97,14 +97,14 @@ def generate_set():
            query_params['min_y'],
            query_params['max_y']]
 
-    data = {
+    response = {
         "set": mandelbrot_data.tolist(),
         "height": dim[0],
         "width": dim[1],
         "coord": coord
     }
 
-    return compress_json(data), 200
+    return compress_json(response), 200
 
 if __name__ == '__main__':
     app.run(debug=True, use_debugger=True, use_reloader=True)

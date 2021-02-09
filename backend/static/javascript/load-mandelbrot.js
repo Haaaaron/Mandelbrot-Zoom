@@ -111,10 +111,11 @@ $(window).ready(function () {
   ccanvas.mouseup(function () {
     if (box != null) {
       //coord=[min_x,max_x,min_y,max_y]
-      let coord = mandelbrot.coord;
       let width = mandelbrot.width;
       let lenx = abs(coord[1] - coord[0]);
       let leny = abs(coord[3] - coord[2]);
+      //let lenx = abs(mandelbrotConst.coord.maxX - mandelbrotConst.coord.minX);
+      //let leny = abs(mandelbrotConst.coord.maxY - mandelbrotConst.coord.minY);
       let height = mandelbrot.height;
       let ReCoord = null;
       let ImCoord = null;
@@ -123,15 +124,16 @@ $(window).ready(function () {
       c.clearRect(0, 0, ccanvas[0].width, ccanvas[0].height);
 
       //convert pixels to complex coordinates
+      print(mandelbrotConst.coord.minX)
       ReCoord = [
-        (box[0] / width) * lenx + coord[0],
-        (box[2] / width) * lenx + coord[0],
+        (box[0] / width) * lenx + mandelbrotConst.coord.minX,
+        (box[2] / width) * lenx + mandelbrotConst.coord.minX,
       ].sort(function (a, b) {
         return a - b;
       });
       ImCoord = [
-        (-box[1] / height) * leny + coord[3],
-        (-box[3] / height) * leny + coord[3],
+        (-box[1] / height) * leny + mandelbrotConst.coord.minY,
+        (-box[3] / height) * leny + mandelbrotConst.coord.minY,
       ].sort(function (a, b) {
         return a - b;
       });
