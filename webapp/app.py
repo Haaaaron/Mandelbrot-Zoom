@@ -6,9 +6,9 @@ import os.path
 from flask import Flask,render_template,jsonify,request,make_response
 
 try:
-    from mandelbrot_generate import generate
+    from mandelbrot.mandelbrot_generate import generate
 except ImportError:
-    from .mandelbrot_generate import generate
+    from .mandelbrot.mandelbrot_generate import generate
 
 import json 
 import numpy as np

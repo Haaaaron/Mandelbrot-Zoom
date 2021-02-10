@@ -4,13 +4,13 @@ import sys
 import os
 import unittest
 import numpy.testing as npt
-import numpy as nps
+import numpy as np
 
 topdir = os.path.join(os.path.dirname(__file__), "..")
 sys.path.append(topdir)
 
 from webapp.app import app
-from webapp.mandelbrot_generate import *
+from webapp.mandelbrot.mandelbrot_generate import generate
 
 TESTFILE = os.path.join(os.path.dirname(__file__),
                         "./snapshots/example_set.txt")

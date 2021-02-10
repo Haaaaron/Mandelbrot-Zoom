@@ -9,6 +9,10 @@ body {
   overflow: hidden;
 }
 
+p {
+  font-size: 1.7vh;
+}
+
 #canvasControls {
   background-color: transparent;
   position: absolute;
@@ -44,6 +48,7 @@ input {
   height: 3.5vh;
   padding-right: 4px;
   font-size: inherit;
+  margin: 0 0.75vw 0 0;
 }
 
 button {
@@ -65,6 +70,7 @@ button:hover {
   color: #000000;
   background-color: #ffffff;
 }
+
 .spinner {
   display: none;
   width: 5vw;
@@ -74,7 +80,7 @@ button:hover {
 }
 
 .spinner > div {
-  background-color: #ed6410;
+  background-color: #ffffff;
   height: 100%;
   width: 0.5vw;
   display: inline-block;
@@ -125,4 +131,87 @@ button:hover {
     transform: scaleY(1);
     -webkit-transform: scaleY(1);
   }
+}
+
+.modal {
+  /* This way it could be display flex or grid or whatever also. */
+  display: block;
+
+  /* Probably need media queries here */
+  width: 50%;
+  max-width: 100%;
+
+  height: 60%;
+  max-height: 100%;
+
+  position: fixed;
+
+  z-index: 100;
+
+  left: 50%;
+  top: 50%;
+
+  /* Use this for centering if unknown width/height */
+  transform: translate(-50%, -50%);
+
+  /* If known, negative margins are probably better (less chance of blurry text). */
+  /* margin: -200px 0 0 -200px; */
+
+  background: white;
+  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+}
+.closed {
+  display: none;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+
+  background: rgba(0, 0, 0, 0.6);
+}
+.modal-guts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: auto;
+  padding: 2em 2em 2em 2em;
+}
+
+.modal .close-button {
+  position: absolute;
+
+  /* don't need to go crazy with z-index here, just sits over .modal-guts */
+  z-index: 1;
+
+  top: 20px;
+
+  /* needs to look OK with or without scrollbar */
+  right: 20px;
+}
+
+#open-buttom {
+  float: rigth;
+}
+
+#link {
+  color: #000000;
+  padding: 0 3px 0 3px;
+}
+
+#link:hover {
+  background-color: #000000;
+  color: #ffffff;
+  transition: 400ms ease all;
+}
+
+#hl {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 0 3px 0 3px;
+  border-radius: 3px;
 }

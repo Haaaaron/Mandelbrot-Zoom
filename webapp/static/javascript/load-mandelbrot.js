@@ -1,7 +1,6 @@
 let mandelbrotInitial;
 let mandelbrot;
 let mandelbrotPrevious;
-let jsonCall = false;
 let loading = document.getElementById("load");
 let box = null;
 let cCanvas = document.getElementById("canvasControls");

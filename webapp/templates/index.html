@@ -17,6 +17,48 @@
     <title>Mandelbrot Zoom</title>
   </head>
   <body>
+    <div class="modal-overlay" id="modal-overlay"></div>
+
+    <div class="modal" id="modal">
+      <button class="close-button" id="close-button">Close</button>
+      <div class="modal-guts">
+        <h1>Mandelbrot-Zoom</h1>
+        <p>
+          A tool to explore the
+          <a
+            href="https://en.wikipedia.org/wiki/Mandelbrot_set"
+            target="_blank"
+            id="link"
+            >Mandelbrot set</a
+          >
+          and it's infinite complexity.
+        </p>
+        <p>
+          Note that the webapp is being hosted on a free hoasting service,
+          meaning that the computational resources are limited. For a snappier
+          experience consider running the webapp locally:
+        </p>
+        <p>
+          <a
+            href="https://github.com/Haaaaron/Mandelbrot-Zoom"
+            target="_blank"
+            id="link"
+            >Github Repository</a
+          >
+        </p>
+        <hr style="width:50%;text-align:left;margin-left:0">
+        <p>
+          Iteration count: Determines how quickly or slowly a point in the
+          complex plain converges. So the deeper you are the higher the
+          iteration count needs to be
+        </p>
+        <p>Pixel density: Determines the size of the image that is produced</p>
+        <p>
+          Resize: <span id="hl">Ctrl</span> + <span id="hl">+/-</span> ,
+          <span id="hl">Ctrl</span> + <span id="hl">Scroll</span>
+        </p>
+      </div>
+    </div>
     <div id="container">
       <div id="mandelbrotSet">
         <canvas id="canvasControls" style="position: absolute"></canvas>
@@ -44,6 +86,7 @@
             value="1500"
           />
         </form>
+        <button id="open-button">Info</button>
         <div class="spinner" id="load">
           <div class="rect1"></div>
           <div class="rect2"></div>
@@ -57,5 +100,9 @@
   <script
     type="text/javascript"
     src="{{url_for('static', filename='javascript/load-mandelbrot.js')}}"
+  ></script>
+  <script
+    type="text/javascript"
+    src="{{url_for('static', filename='javascript/popup.js')}}"
   ></script>
 </html>
