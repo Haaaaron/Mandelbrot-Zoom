@@ -1,4 +1,4 @@
-""" Test ./backend/app.py module """
+""" Test ./app/app.py module """
 
 import sys
 import os
@@ -9,8 +9,8 @@ import numpy as nps
 topdir = os.path.join(os.path.dirname(__file__), "..")
 sys.path.append(topdir)
 
-from backend.app import app
-from backend.mandelbrot_generate import *
+from webapp.app import app
+from webapp.mandelbrot_generate import *
 
 TESTFILE = os.path.join(os.path.dirname(__file__),
                         "./snapshots/example_set.txt")

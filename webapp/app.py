@@ -20,7 +20,7 @@ app.config['JSON_SORT_KEYS'] = False
 
 def compress_json(data):
     """
-    Compresses large json data that in this case would be the mandelbrot set matricies
+    Compresses large json data that in this case would be the Mandelbrot set matrix
     """
     json_data = json.dumps(data)
     encoded = json_data.encode('utf-8')
@@ -56,12 +56,12 @@ def generate_set():
             "max_x": request.args.get('maxX'),
             "min_y": request.args.get('minY'),
             "max_y": request.args.get('maxY'),
-            "resolution": request.args.get('density'),
-            "iteration": request.args.get('iter'),
+            "resolution": request.args.get('resolution'),
+            "iteration": request.args.get('iteration'),
         }
 
         for key in query_params:
-            if len(query_params[key]) == 0 or query_params[key] == "NaN":
+            if len(query_params[key]) == 0 or query_params[key] == "NaN" or query_params[key] == "undefined":
                 raise TypeError
             query_params[key] = float(query_params[key])
 
@@ -92,16 +92,10 @@ def generate_set():
 
     #Parameters for drawing mandelbrot set on client side
     dim = np.shape(mandelbrot_data)
-    coord=[query_params['min_x'],
-           query_params['max_x'],
-           query_params['min_y'],
-           query_params['max_y']]
-
     response = {
         "set": mandelbrot_data.tolist(),
         "height": dim[0],
         "width": dim[1],
-        "coord": coord
     }
 
     return compress_json(response), 200

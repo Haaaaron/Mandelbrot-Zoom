@@ -14,11 +14,11 @@ class MandelbrotConditions {
       minY: -1,
       maxY: 1,
     };
-    this.density = 1000;
+    this.resolution = 1000;
     this.iteration = 100;
   }
   url() {
-    return `/data?minX=${this.coord.minX}&maxX=${this.coord.maxX}&minY=${this.coord.minY}&maxY=${this.coord.maxY}&density=${this.density}&iter=${this.iteration}`;
+    return `/data?minX=${this.coord.minX}&maxX=${this.coord.maxX}&minY=${this.coord.minY}&maxY=${this.coord.maxY}&resolution=${this.resolution}&iteration=${this.iteration}`;
   }
   reset() {
     this.coord = {
@@ -27,7 +27,7 @@ class MandelbrotConditions {
       minY: -1,
       maxY: 1,
     };
-    this.density = 1500;
+    this.resolution = 1500;
     this.iteration = 100;
   }
 }
@@ -82,7 +82,6 @@ $(window).ready(function () {
   let c = ccanvas[0].getContext("2d");
 
   ccanvas.mousedown(function (e) {
-    console.log(e.pageX, e.pageY, mandelbrot.width, mandelbrot.height);
     if (
       box == null &&
       e.pageX <= mandelbrot.width &&
@@ -110,13 +109,11 @@ $(window).ready(function () {
 
   ccanvas.mouseup(function () {
     if (box != null) {
-      //coord=[min_x,max_x,min_y,max_y]
+      //coord:[min_x,max_x,min_y,max_y]
       let width = mandelbrot.width;
-      let lenx = abs(coord[1] - coord[0]);
-      let leny = abs(coord[3] - coord[2]);
-      //let lenx = abs(mandelbrotConst.coord.maxX - mandelbrotConst.coord.minX);
-      //let leny = abs(mandelbrotConst.coord.maxY - mandelbrotConst.coord.minY);
       let height = mandelbrot.height;
+      let lenx = abs(mandelbrotConst.coord.maxX - mandelbrotConst.coord.minX);
+      let leny = abs(mandelbrotConst.coord.maxY - mandelbrotConst.coord.minY);
       let ReCoord = null;
       let ImCoord = null;
 
@@ -124,7 +121,6 @@ $(window).ready(function () {
       c.clearRect(0, 0, ccanvas[0].width, ccanvas[0].height);
 
       //convert pixels to complex coordinates
-      print(mandelbrotConst.coord.minX)
       ReCoord = [
         (box[0] / width) * lenx + mandelbrotConst.coord.minX,
         (box[2] / width) * lenx + mandelbrotConst.coord.minX,
@@ -132,13 +128,12 @@ $(window).ready(function () {
         return a - b;
       });
       ImCoord = [
-        (-box[1] / height) * leny + mandelbrotConst.coord.minY,
-        (-box[3] / height) * leny + mandelbrotConst.coord.minY,
+        (-box[1] / height) * leny + mandelbrotConst.coord.maxY,
+        (-box[3] / height) * leny + mandelbrotConst.coord.maxY,
       ].sort(function (a, b) {
         return a - b;
       });
       box = null;
-      console.log(mandelbrotConst.coord, ReCoord.concat(ImCoord));
       mandelbrotConst.coord = {
         minX: ReCoord[0],
         maxX: ReCoord[1],
@@ -164,11 +159,11 @@ $(window).ready(function () {
   $("#recalculate").click(function () {
     var constants = $("#constants").serializeArray();
     let iteration = parseInt(constants[0].value);
-    let density = parseInt(constants[1].value);
+    let resolution = parseInt(constants[1].value);
 
-    if (iteration && density) {
+    if (iteration && resolution) {
       mandelbrotConst.iteration = iteration;
-      mandelbrotConst.density = density;
+      mandelbrotConst.resolution = resolution;
       reloadMandelbrot();
     }
   });
