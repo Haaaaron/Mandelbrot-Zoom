@@ -5,7 +5,7 @@ https://mandelbrotzoom.pythonanywhere.com/
 Tool to explore the mandelbrot set. Calculated with fortran and displayed with javascript. Framework is made with python.
 
 # Getting started
-All commands will be excecuted in the ./webapp directory of the project
+Most commands will be excecuted in the ./webapp directory of the project
   
 ## Setting up environment with python virtualenv:
 
@@ -54,4 +54,10 @@ Zoom away!
 Environment variables can be set with flask run:
 
     flask run --host=0.0.0.0 --port=80
+    
+## Testing
+
+All tests can be run in ./tests directory
+  
+    python3 -m unittest -v
 
