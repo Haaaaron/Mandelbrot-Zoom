@@ -23,8 +23,8 @@ def setUpModule():
     global DUMMY_ROUTE_MISSING
     global EXAMPLE_DATA
 
-    DUMMY_ROUTE = "/data/?minX=-2&maxX=1&minY=-1&maxY=1&density=1000&iter=100"
-    DUMMY_ROUTE_INCORRECT = "/data/?minX=-&maxX=1&minY=-1&maxY=1&density=1000&iter=100"
+    DUMMY_ROUTE = "/data/?minX=-2&maxX=1&minY=-1&maxY=1&resolution=1000&iteration=100"
+    DUMMY_ROUTE_INCORRECT = "/data/?minX=-&maxX=1&minY=-1&maxY=1&resolution=1000&iteration=100"
     DUMMY_ROUTE_MISSING = "/data/"
     EXAMPLE_DATA = np.loadtxt(TESTFILE)
 
@@ -42,7 +42,6 @@ class FlaskTest(unittest.TestCase):
         """ Test response type is JSON """
         tester = app.test_client(self)
         response = tester.get(DUMMY_ROUTE)
-        print(response.content_type)
         self.assertEqual(response.content_type, "application/json")
 
     def test_response_data(self):
@@ -62,7 +61,6 @@ class FlaskTest(unittest.TestCase):
         """ Test missing query params returns error and error message """
         tester = app.test_client(self)
         response = tester.get(DUMMY_ROUTE_MISSING)
-        print(response.data)
         self.assertEqual(response.status_code, 400)
         self.assertTrue(b'error' in response.data)
 
