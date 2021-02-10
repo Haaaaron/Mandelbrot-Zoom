@@ -5,7 +5,7 @@ https://mandelbrotzoom.pythonanywhere.com/
 Tool to explore the mandelbrot set. Calculated with fortran and displayed with javascript. Framework is made with python.
 
 # Getting started
-All commands will be excecuted in the ./backend directory of the project
+All commands will be excecuted in the ./webapp directory of the project
   
 ## Setting up environment with python virtualenv:
 
@@ -22,6 +22,8 @@ Install dependencies using requirements.txt:
     pip install -r requirements.txt
 
 ## Creating Fortran to python excecutable:
+
+Navigate to /webapp/mandelbrot directory
 
 Note that you will need a fortran compiler to create the excecutable.
 (Tested with gfortran https://gcc.gnu.org/wiki/GFortran)
