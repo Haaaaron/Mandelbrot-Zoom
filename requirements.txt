@@ -1,2 +1,3 @@
 Flask==1.1.2
 numpy==1.19.4
+jinja2
